@@ -2,11 +2,24 @@ FROM php:7.3-apache
 
 RUN a2enmod rewrite && a2enmod headers
 
+RUN apt-get update &&\
+    apt-get install --no-install-recommends --assume-yes --quiet ca-certificates curl git &&\
+    rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update &&\
+	apt-get install imagemagick -y
+
+RUN apt-get update -y && apt-get install -y sendmail libpng-dev
+
+RUN apt-get update && \
+    apt-get install -y \
+        zlib1g-dev 
+
 # install the PHP extensions we need
 RUN apt-get update && apt-get install -y locales git-core libsqlite3-dev libicu-dev libldap2-dev libfreetype6-dev libjpeg62-turbo-dev mysql-client php5-mysql libmcrypt-dev libpng12-dev libpq-dev libexif-dev libmcrypt-dev libpng12-dev libjpeg-dev && rm -rf /var/lib/apt/lists/* \
         && docker-php-ext-configure gd --with-png-dir=/usr --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include \
 	&& docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
-        && docker-php-ext-install gd mysql mysqli ldap calendar mcrypt gettext intl exif zip mbstring pdo pdo_mysql pdo_sqlite pdo_pgsql json
+        && docker-php-ext-install gd mysql mysqli ldap calendar opcache mcrypt gettext intl exif zip mbstring pdo pdo_mysql pdo_sqlite pdo_pgsql json
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php && \
