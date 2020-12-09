@@ -13,7 +13,7 @@ RUN apt-get update -y && apt-get install -y sendmail libpng-dev apt-utils
 
 RUN apt-get update && \
     apt-get install -y \
-        zlib1g-dev 
+        zlib1g-dev libmcrypt-dev
 	
 # install PHP LDAP support
 RUN \
@@ -28,7 +28,7 @@ RUN pecl install mcrypt-1.0.3
 RUN docker-php-ext-enable mcrypt
 
 # install the PHP extensions we need
-RUN apt-get update && apt-get install -y locales git-core libsqlite3-dev libicu-dev libfreetype6-dev libjpeg62-turbo-dev mariadb-client libmcrypt-dev libpq-dev libexif-dev libmcrypt-dev libjpeg-dev && rm -rf /var/lib/apt/lists/* \
+RUN apt-get update && apt-get install -y locales git-core libsqlite3-dev libicu-dev libfreetype6-dev libjpeg62-turbo-dev mariadb-client libpq-dev libexif-dev libjpeg-dev && rm -rf /var/lib/apt/lists/* \
         && docker-php-ext-install gd calendar opcache gettext intl exif zip mbstring pdo pdo_mysql pdo_sqlite pdo_pgsql json
 
 # Install Composer
