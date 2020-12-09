@@ -24,8 +24,8 @@ RUN \
     docker-php-ext-install ldap
     
 # install PHP mcrypt
-pecl install mcrypt-1.0.3
-docker-php-ext-enable mcrypt
+RUN pecl install mcrypt-1.0.3
+RUN docker-php-ext-enable mcrypt
 
 # install the PHP extensions we need
 RUN apt-get update && apt-get install -y locales git-core libsqlite3-dev libicu-dev libfreetype6-dev libjpeg62-turbo-dev mariadb-client libmcrypt-dev libpq-dev libexif-dev libmcrypt-dev libjpeg-dev && rm -rf /var/lib/apt/lists/* \
