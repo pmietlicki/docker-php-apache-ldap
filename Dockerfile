@@ -33,7 +33,7 @@ RUN apt-get update -y && apt-get install -y sendmail libpng-dev
 
 RUN docker-php-ext-install mbstring
 
-RUN docker-php-ext-install zip
+RUN apt-get update && apt-get install -y libzip-dev && docker-php-ext-install zip
 
 RUN docker-php-ext-install opcache
 
