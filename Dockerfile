@@ -13,7 +13,7 @@ RUN apt-get update -y && apt-get install -y sendmail libpng-dev apt-utils
 
 RUN apt-get update && \
     apt-get install -y \
-        zlib1g-dev libmcrypt-dev
+        zlib1g-dev libmcrypt-dev libxml2-dev
 	
 # install PHP LDAP support
 RUN \
@@ -40,6 +40,8 @@ RUN docker-php-ext-install opcache
 RUN docker-php-ext-install gd
 
 RUN docker-php-ext-install mysqli
+
+RUN docker-php-ext-install soap
 
 # install the PHP extensions we need
 RUN apt-get update && apt-get install -y locales git-core libsqlite3-dev libicu-dev libfreetype6-dev libjpeg62-turbo-dev mariadb-client libexif-dev libjpeg-dev && rm -rf /var/lib/apt/lists/*
