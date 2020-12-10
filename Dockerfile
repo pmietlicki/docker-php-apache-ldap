@@ -7,7 +7,7 @@ RUN apt-get update &&\
     rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update &&\
-	apt-get install imagemagick -y
+	apt-get install imagemagick graphviz -y
 
 RUN apt-get update -y && apt-get install -y sendmail libpng-dev apt-utils
 
