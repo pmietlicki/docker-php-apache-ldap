@@ -39,6 +39,8 @@ RUN docker-php-ext-install opcache
 
 RUN docker-php-ext-install gd
 
+RUN docker-php-ext-install mysqli
+
 # install the PHP extensions we need
 RUN apt-get update && apt-get install -y locales git-core libsqlite3-dev libicu-dev libfreetype6-dev libjpeg62-turbo-dev mariadb-client libexif-dev libjpeg-dev && rm -rf /var/lib/apt/lists/*
 
