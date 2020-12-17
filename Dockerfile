@@ -13,7 +13,7 @@ RUN apt-get update -y && apt-get install -y sendmail libpng-dev apt-utils
 
 RUN apt-get update && \
     apt-get install -y \
-        zlib1g-dev libmcrypt-dev libxml2-dev libbz2-dev
+        zlib1g-dev libmcrypt-dev libxml2-dev libbz2-dev libxslt-dev
 	
 # install PHP LDAP support
 RUN \
