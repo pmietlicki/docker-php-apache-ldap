@@ -41,7 +41,7 @@ RUN docker-php-ext-install gd
 
 RUN docker-php-ext-install mysqli
 
-RUN docker-php-ext-install soap
+RUN docker-php-ext-install soap bz2 calendar exif gettext pcntl sockets wddx xsl
 
 # install the PHP extensions we need
 RUN apt-get update && apt-get install -y locales git-core libsqlite3-dev libicu-dev libfreetype6-dev libjpeg62-turbo-dev mariadb-client libexif-dev libjpeg-dev && rm -rf /var/lib/apt/lists/*
