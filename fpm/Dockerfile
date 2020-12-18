@@ -1,7 +1,5 @@
 FROM php:7.3-fpm
 
-RUN a2enmod rewrite && a2enmod headers
-
 RUN apt-get update &&\
     apt-get install --no-install-recommends --assume-yes --quiet ca-certificates curl git &&\
     rm -rf /var/lib/apt/lists/*
