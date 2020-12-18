@@ -20,7 +20,10 @@ RUN \
     rm -rf /var/lib/apt/lists/* && \
     docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && \
     docker-php-ext-install ldap
-    
+
+# install PHP Redis support
+RUN pecl install redis && docker-php-ext-enable redis
+
 # install PHP mcrypt
 RUN pecl install mcrypt-1.0.3
 RUN docker-php-ext-enable mcrypt
